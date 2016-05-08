@@ -2,6 +2,7 @@ var restify = require('restify');
 var builder = require('botbuilder');
 require('./phrases.js')();
 require('./weather.js')();
+require('./sport.js')();
 
 var requestingCity = false;
 
@@ -9,13 +10,20 @@ var bot = new builder.BotConnectorBot({ appId: 'IraqiSmartBot', appSecret: '9fff
 
 bot.add('/', function (session) {
     var parsedPhrase = PhraseParser(session.message.text);
-    if (parsedPhrase.phraseType == "UserWelcomePhrase") {
+    if (parsedPhrase.phraseType == "UserWelcomePhrase" || parsedPhrase.phraseType == "UserThankPhrase" ||
+            parsedPhrase.phraseType == "UserLunchRequest" || parsedPhrase.phraseType == "UserDinnerRequest") {
         session.send(parsedPhrase.phraseContent);
     } else if (parsedPhrase.phraseType == "UserWeatherRequestPhrase0") {
         GetWeather(session, parsedPhrase.phraseContent);
     } else if (parsedPhrase.phraseType == "UserWeatherRequestPhrase1") {
         requestingCity = true;
         session.send("وين؟ - اسم المدينة بدون إضافات");
+    } else if (parsedPhrase.phraseType == "UserSportPhrase") {
+        if (parsedPhrase.phraseContent == -1) {
+            session.send("حاليًا بس برشلونة و ريال مدريد، اسف.");
+        } else {
+            GetNextMatch(session, parsedPhrase.phraseContent);
+        }
     } else {
         if (!requestingCity) session.send(parsedPhrase.phraseContent);
         else {
