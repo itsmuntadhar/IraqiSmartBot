@@ -1,0 +1,21 @@
+{
+  "name": "iraqismartbot",
+  "version": "0.1.0",
+  "description": "Iraqi bot developed by Iraqi developer for all Iraqi people",
+  "main": "iraqismartbotapp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Iraq",
+    "Iraqi",
+    "Bot"
+  ],
+  "author": "Muntadhar Haydar",
+  "license": "ISC",
+  "dependencies": {
+    "botbuilder": "^0.9.2",
+    "mysql": "^2.10.2",
+    "yql": "^1.0.2"
+  }
+}
