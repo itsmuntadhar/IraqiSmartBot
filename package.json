@@ -2,7 +2,7 @@
   "name": "iraqismartbot",
   "version": "0.1.0",
   "description": "Iraqi bot developed by Iraqi developer for all Iraqi people",
-  "main": "iraqismartbotapp.js",
+  "main": "iraqismartbot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
