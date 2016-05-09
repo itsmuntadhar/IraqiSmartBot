@@ -12,6 +12,10 @@ module.exports = function () {
     this.BotLunchResponsePhrases = ["دولمة", "تمن ومرگ", "باجة", "تمن باگلة", "سمك، بأي شكل"];
     this.UserDinnerRequestPhrases = ["شنسوي للعشه", "اقترحلي عشه", "شنسوي للعشة", "اقترحلي عشة", "شتقترح عشة", "شتقترح عشه"];
     this.BotDinnerResponsePhrases = ["بيتزا", "معكرونة", "دجاج شوي", "كباب", "جبن وشاي", "حافظ على رشاقتك"];
+    this.UserWhereAreYouPhrases = ["وينك", "وين عايش"];
+    this.BotWhereAreYouPhrases = ["بالنت", "فيسبوك مسنجر والتيليكرام"];
+    this.UserWhoAreYouPhrases = ["منو انت", "انت منو", "منو انته", "منو مسويك", "منو مبرمجك", "منو مخترعك"];
+    this.BotWhoAreYouPhrases = ["اني لحد الآن بدون اسم رسمي، صدگني. بس حاليًا إسمي:\n\rIraqi Smart Bot - بوت عراقي ذكي", "مبرمج عراقي"];
 
     this.PhraseParser = function (phrase) {
         var res = { phraseType: "", phraseContent: "" };
@@ -74,9 +78,23 @@ module.exports = function () {
         } else if (doesPhraseContainDinner(phrase)) {
             res.phraseType = "UserDinnerRequest";
             res.phraseContent = BotDinnerResponsePhrases[randomIntFromInterval(0, BotDinnerResponsePhrases.length - 1)];
+        } else if (phrase.indexOf(UserWhereAreYouPhrases[0]) > -1 || phrase.indexOf(UserWhereAreYouPhrases[1]) > -1 || phrase.indexOf(UserWhereAreYouPhrases[2]) > -1) {
+            res.phraseType = "UserWhereAreYouPhrase";
+            res.phraseContent = BotWhereAreYouPhrases[randomIntFromInterval(0, 1)];
+        } else if (phrase.indexOf(UserWhoAreYouPhrases[0]) > -1 || phrase.indexOf(UserWhoAreYouPhrases[1]) > -1 || phrase.indexOf(UserWhoAreYouPhrases[2]) > -1) {
+            res.phraseType = "UserWhoAreYouPhrase";
+            res.phraseContent = BotWhoAreYouPhrases[0];
+        } else if (phrase.indexOf(UserWhoAreYouPhrases[3]) > -1 || phrase.indexOf(UserWhoAreYouPhrases[4]) > -1 || phrase.indexOf(UserWhoAreYouPhrases[5]) > -1) {
+            res.phraseType = "UserWhoAreYouPhrase";
+            res.phraseContent = BotWhoAreYouPhrases[1];
         } else {
             res.phraseType = "UnknownPhrase-";
-            res.phraseContent = "ممم ما فهمت عليك، مرة ثانية بلا زحمة.";
+            res.phraseContent = "ممم ما فهمت عليك، مرة ثانية بلا زحمة." + "\n\r" + "الي اكدر اجاوبك عليه حاليًا" + "\n\r";
+            res.phraseContent += "شلونه الجو" + "\n\r";
+            res.phraseContent += "منو مبرمجك" + "\n\r";
+            res.phraseContent += "منو انت" + "\n\r";
+            res.phraseContent += "شتقترح غدة" + "\n\r";
+            res.phraseContent += "شتقترح عشة" + "\n\r";
         }
         return res
     };

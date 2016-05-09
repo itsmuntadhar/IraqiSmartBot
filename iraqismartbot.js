@@ -11,7 +11,8 @@ var bot = new builder.BotConnectorBot({ appId: 'IraqiSmartBot', appSecret: '9fff
 bot.add('/', function (session) {
     var parsedPhrase = PhraseParser(session.message.text);
     if (parsedPhrase.phraseType == "UserWelcomePhrase" || parsedPhrase.phraseType == "UserThankPhrase" ||
-            parsedPhrase.phraseType == "UserLunchRequest" || parsedPhrase.phraseType == "UserDinnerRequest") {
+            parsedPhrase.phraseType == "UserLunchRequest" || parsedPhrase.phraseType == "UserDinnerRequest" || 
+            parsedPhrase.phraseType == "UserWhereAreYouPhrase" || parsedPhrase.phraseType == "UserWhoAreYou") {
         session.send(parsedPhrase.phraseContent);
     } else if (parsedPhrase.phraseType == "UserWeatherRequestPhrase0") {
         GetWeather(session, parsedPhrase.phraseContent);
@@ -36,5 +37,5 @@ bot.add('/', function (session) {
 //Server configurations
 var server = restify.createServer();
 server.post('/api/messages', bot.verifyBotFramework(), bot.listen());
-server.listen(process.env.port || 8080, function () { console.log("Server started at %s", server.url); });
+server.listen(process.env.port || process.env.PORT || 8080, function () { console.log("Server started at %s", server.url); });
 
