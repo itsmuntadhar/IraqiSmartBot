@@ -9,6 +9,7 @@ var requestingCity = false;
 var bot = new builder.BotConnectorBot({ appId: 'IraqiSmartBot', appSecret: '9fffc9610c6a4fc3b0e719bbf5607fe7' });
 
 bot.add('/', function (session) {
+    console.log(session.message);
     var parsedPhrase = PhraseParser(session.message.text);
     if (parsedPhrase.phraseType == "UserWelcomePhrase" || parsedPhrase.phraseType == "UserThankPhrase" ||
             parsedPhrase.phraseType == "UserLunchRequest" || parsedPhrase.phraseType == "UserDinnerRequest" || 
