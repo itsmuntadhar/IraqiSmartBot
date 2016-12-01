@@ -53,26 +53,7 @@ module.exports = function () {
             var randInt = randomIntFromInterval(2, 3);
             res.phraseType = "UserHowAreYouPhrase";
             res.phraseContent = BotHowAreYouPhrases[randInt];
-        }/* else if (phrase.indexOf(UserSportPhrases[0]) > -1) {
-            var teamId;
-            phrase = phrase.indexOf(-1) == '?' || phrase.indexOf(-1) == "؟" ? phrase.substr(0, phrase.length - 1) : phrase;
-            switch (phrase.substr(10)) {
-                case "برشلونة":
-                    teamId = 15702;
-                    break;
-                case "برشلونه":
-                    teamId = 15702;
-                    break;
-                case "ريال مدريد":
-                    teamId = 16110;
-                    break;
-                default:
-                    teamId = -1;
-                    break;
-            }
-            res.phraseType = "UserSportPhrase";
-            res.phraseContent = teamId;
-        }*/ else if (doesPhraseContainLunch(phrase)) {
+        } else if (doesPhraseContainLunch(phrase)) {
             res.phraseType = "UserLunchRequest";
             res.phraseContent = BotLunchResponsePhrases[randomIntFromInterval(0, BotLunchResponsePhrases.length - 1)];
         } else if (doesPhraseContainDinner(phrase)) {

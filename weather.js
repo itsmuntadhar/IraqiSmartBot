@@ -44,6 +44,9 @@ module.exports = function () {
             case "mostly cloudy":
                 res = "غائم غالبًا";
                 break;
+            case "rain":
+                res = "ممطر";
+                break;
             default:
                 console.log(condition);
                 res = "غير معروف";

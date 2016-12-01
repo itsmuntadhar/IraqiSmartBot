@@ -15,7 +15,7 @@ bot.add('/', function (session) {
     var parsedPhrase = PhraseParser(session.message.text);
     if (parsedPhrase.phraseType == "UserWelcomePhrase" || parsedPhrase.phraseType == "UserThankPhrase" ||
             parsedPhrase.phraseType == "UserLunchRequest" || parsedPhrase.phraseType == "UserDinnerRequest" || 
-            parsedPhrase.phraseType == "UserWhereAreYouPhrase" || parsedPhrase.phraseType == "UserWhoAreYou" ||
+            parsedPhrase.phraseType == "UserWhereAreYouPhrase" || parsedPhrase.phraseType == "UserWhoAreYouPhrase" ||
             parsedPhrase.phraseType == "UserHowAreYouPhrase") {
         session.send(parsedPhrase.phraseContent);
     } else if (parsedPhrase.phraseType == "UserWeatherRequestPhrase0") {
@@ -23,18 +23,9 @@ bot.add('/', function (session) {
     } else if (parsedPhrase.phraseType == "UserWeatherRequestPhrase1") {
         requestingCity = true;
         session.send("وين؟ - اسم المدينة بدون إضافات");
-    } /*selse if (parsedPhrase.phraseType == "UserSportPhrase") {
-        if (parsedPhrase.phraseContent == -1) {
-            session.send("حاليًا بس برشلونة و ريال مدريد، اسف.");
-        } else {
-            GetNextMatch(session, parsedPhrase.phraseContent);
-        }
-    }*/ else {
-        if (!requestingCity) 
+    } else {
+        if (requestingCity) 
         {
-            session.send("أگدر أجاوب على اشياء مِثل: هلو، شلونك، شتقترح غدة، شتقترح عشة، منو انت، منو مبرمجك");
-        }
-        else {
             requestingCity = false;
             GetWeather(session, session.message.text);
         }
