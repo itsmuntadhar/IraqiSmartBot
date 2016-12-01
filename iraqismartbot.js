@@ -16,7 +16,7 @@ bot.add('/', function (session) {
     if (parsedPhrase.phraseType == "UserWelcomePhrase" || parsedPhrase.phraseType == "UserThankPhrase" ||
             parsedPhrase.phraseType == "UserLunchRequest" || parsedPhrase.phraseType == "UserDinnerRequest" || 
             parsedPhrase.phraseType == "UserWhereAreYouPhrase" || parsedPhrase.phraseType == "UserWhoAreYou" ||
-            parsedPhrase.phraseType == "UserHowAreYouPhrase" || parsedPhrase.phraseType == "UnknownPhrase-") {
+            parsedPhrase.phraseType == "UserHowAreYouPhrase") {
         session.send(parsedPhrase.phraseContent);
     } else if (parsedPhrase.phraseType == "UserWeatherRequestPhrase0") {
         GetWeather(session, parsedPhrase.phraseContent);
