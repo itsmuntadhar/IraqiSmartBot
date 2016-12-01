@@ -14,7 +14,7 @@ module.exports = function () {
     this.BotDinnerResponsePhrases = ["بيتزا", "معكرونة", "دجاج شوي", "كباب", "جبن وشاي", "حافظ على رشاقتك"];
     this.UserWhereAreYouPhrases = ["وينك", "وين عايش", "منين انت"];
     this.BotWhereAreYouPhrases = ["بالنت", "فيسبوك مسنجر والتيليكرام"];
-    this.UserWhoAreYouPhrases = ["منو انت", "انت منو", "منو انته", "منو مسويك", "منو مبرمجك", "منو مخترعك"];
+    this.UserWhoAreYouPhrases = ["منو انت", "انت منو", "منو انته", "منو مسويك", "منو مبرمجك", "منو مخترعك", "منين انت"];
     this.BotWhoAreYouPhrases = ["اني لحد الآن بدون اسم رسمي، صدگني. بس حاليًا إسمي:\n\rIraqi Smart Bot - بوت عراقي ذكي", "مبرمج عراقي"];
 
     this.PhraseParser = function (phrase) {
