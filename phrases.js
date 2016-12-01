@@ -53,7 +53,7 @@ module.exports = function () {
             var randInt = randomIntFromInterval(2, 3);
             res.phraseType = "UserHowAreYouPhrase";
             res.phraseContent = BotHowAreYouPhrases[randInt];
-        } else if (phrase.indexOf(UserSportPhrases[0]) > -1) {
+        }/* else if (phrase.indexOf(UserSportPhrases[0]) > -1) {
             var teamId;
             phrase = phrase.indexOf(-1) == '?' || phrase.indexOf(-1) == "؟" ? phrase.substr(0, phrase.length - 1) : phrase;
             switch (phrase.substr(10)) {
@@ -72,7 +72,7 @@ module.exports = function () {
             }
             res.phraseType = "UserSportPhrase";
             res.phraseContent = teamId;
-        } else if (doesPhraseContainLunch(phrase)) {
+        }*/ else if (doesPhraseContainLunch(phrase)) {
             res.phraseType = "UserLunchRequest";
             res.phraseContent = BotLunchResponsePhrases[randomIntFromInterval(0, BotLunchResponsePhrases.length - 1)];
         } else if (doesPhraseContainDinner(phrase)) {

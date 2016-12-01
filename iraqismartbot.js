@@ -1,5 +1,7 @@
 var restify = require('restify');
 var builder = require('botbuilder');
+//var connector = require('botconnector');
+
 require('./phrases.js')();
 require('./weather.js')();
 require('./sport.js')();
@@ -9,7 +11,7 @@ var requestingCity = false;
 var bot = new builder.BotConnectorBot({ appId: 'IraqiSmartBot', appSecret: '9fffc9610c6a4fc3b0e719bbf5607fe7' });
 
 bot.add('/', function (session) {
-    console.log(session.message);
+    //console.log(session.message);
     var parsedPhrase = PhraseParser(session.message.text);
     if (parsedPhrase.phraseType == "UserWelcomePhrase" || parsedPhrase.phraseType == "UserThankPhrase" ||
             parsedPhrase.phraseType == "UserLunchRequest" || parsedPhrase.phraseType == "UserDinnerRequest" || 
@@ -20,14 +22,27 @@ bot.add('/', function (session) {
     } else if (parsedPhrase.phraseType == "UserWeatherRequestPhrase1") {
         requestingCity = true;
         session.send("وين؟ - اسم المدينة بدون إضافات");
-    } else if (parsedPhrase.phraseType == "UserSportPhrase") {
+    } /*selse if (parsedPhrase.phraseType == "UserSportPhrase") {
         if (parsedPhrase.phraseContent == -1) {
             session.send("حاليًا بس برشلونة و ريال مدريد، اسف.");
         } else {
             GetNextMatch(session, parsedPhrase.phraseContent);
         }
-    } else {
-        if (!requestingCity) session.send(parsedPhrase.phraseContent);
+    }*/ else {
+        if (!requestingCity) 
+        {
+            session.send(parsedPhrase.phraseContent);
+            //toChannel = new channelAddress();
+            //toChannel.ChannelId = "telegram";
+            //toChannel.Address = "mrmhk97";
+            var msg = 
+            {
+                to: session.message.from,
+                from: session.message.to,
+                text: "testing ...",
+            };
+	        connector.messages.send(msg);
+        }
         else {
             requestingCity = false;
             GetWeather(session, session.message.text);
