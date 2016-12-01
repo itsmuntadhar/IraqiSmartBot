@@ -47,6 +47,9 @@ module.exports = function () {
             case "rain":
                 res = "ممطر";
                 break;
+            case "thunderstorms":
+                res = "عواصف رعدية";
+                break;
             default:
                 console.log(condition);
                 res = "غير معروف";
