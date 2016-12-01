@@ -16,7 +16,7 @@ bot.add('/', function (session) {
     if (parsedPhrase.phraseType == "UserWelcomePhrase" || parsedPhrase.phraseType == "UserThankPhrase" ||
             parsedPhrase.phraseType == "UserLunchRequest" || parsedPhrase.phraseType == "UserDinnerRequest" || 
             parsedPhrase.phraseType == "UserWhereAreYouPhrase" || parsedPhrase.phraseType == "UserWhoAreYou" ||
-            parsedPhrase.phraseType == "UserHowAreYouPhrase") {
+            parsedPhrase.phraseType == "UserHowAreYouPhrase" || parsedPhrase.phraseType == "UnknownPhrase-") {
         session.send(parsedPhrase.phraseContent);
     } else if (parsedPhrase.phraseType == "UserWeatherRequestPhrase0") {
         GetWeather(session, parsedPhrase.phraseContent);
@@ -32,17 +32,7 @@ bot.add('/', function (session) {
     }*/ else {
         if (!requestingCity) 
         {
-            session.send(parsedPhrase.phraseContent);
-            //toChannel = new channelAddress();
-            //toChannel.ChannelId = "telegram";
-            //toChannel.Address = "mrmhk97";
-            var msg = 
-            {
-                to: session.message.from,
-                from: session.message.to,
-                text: "testing ...",
-            };
-	        connector.messages.send(msg);
+            session.send("أگدر أجاوب على اشياء مِثل: هلو، شلونك، شتقترح غدة، شتقترح عشة، منو انت، منو مبرمجك");
         }
         else {
             requestingCity = false;
